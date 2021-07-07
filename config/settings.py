@@ -26,6 +26,7 @@ SECRET_KEY = 'django-insecure-q#(olgr^^m1u^x^t+3&=@=2-xhnfn5b@z358v8*r1wf*yvu*o8
 DEBUG = True
 
 ALLOWED_HOSTS = []
+LOGIN_URL = '/login/'
 
 
 # Application definition
@@ -56,7 +57,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -125,3 +126,4 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+AUTH_USER_MODEL = 'custom_users.Uzer'
