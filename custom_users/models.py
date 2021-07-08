@@ -15,7 +15,7 @@ class Uzer(AbstractUser):
     portfolio = models.URLField(blank=True, null=True)
 
     def __str__(self):
-        return self.owner.username
+        return self.username
 
     def count_follows(self):
         return self.follwing.count()

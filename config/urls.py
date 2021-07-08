@@ -16,7 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from custom_users.views import login_view, logout_view, signup_view, home_view, profile_view, CreateProfileView
-from uploads.views import upload_view 
+# from uploads.views import upload_view
+from uploads.views import AddPostView 
 from django.conf.urls.static import static
 from django.conf import settings
 
@@ -29,8 +30,9 @@ urlpatterns = [
     # Profile Views
     path('profile/<int:user_id>/', profile_view),
     path('profile/<int:user_id>/update/', CreateProfileView.as_view(), name='profile_update'),
-    path('uploads/', upload_view, name='uploads'),
-    path('images/', upload_view, name='images')
+    # path('uploads/', upload_view, name='uploads'),
+    path('uploads/', AddPostView, name='uploads'),
+    # path('images/', upload_view, name='images'),
     
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
