@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+       <h1>Hi {{owner.username}}</h1>
+       {%if request.user.id == owner.id%}
+       <a href="/profile/{{owner.id}}/update/">
+        <button>Edit Profile</button>
+    </a>
+        {%endif%}
+       <div>
+           <p>{%if owner.bio%}Bio: {{owner.bio}}{%endif%}</p>
+           <div>
+               <p>{%if owner.location%}Location: {{owner.location}} {%endif%}</p>
+               
+               <p>{%if owner.portfolio%} <a href="{{owner.portfolio}}" target="blank">Portfolio</a>{{%endif%}</p>
+               <p>{%if owner.github%} <a href='{{owner.github}}' target="blank"> Github</a>{%endif%}</p>
+               <p>{%if owner.linkedin%}<a href="{{owner.linkedin}}" target='blank'>Linkedin</a>{%endif%}</p>
+           </div>
+       </div>
+    </div>
+</body>
+</html>

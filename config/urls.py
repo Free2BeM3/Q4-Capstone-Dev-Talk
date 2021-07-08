@@ -15,10 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from custom_users.views import login_view, signup_view
+from custom_users.views import login_view, logout_view, signup_view, home_view, profile_view, CreateProfileView
 
 urlpatterns = [
+    path('', home_view, name='homepage'),
     path('signup/', signup_view),
     path('login/', login_view),
+    path('logout/', logout_view),
     path('admin/', admin.site.urls),
+    # Profile Views
+    path('profile/<int:user_id>/', profile_view),
+    path('profile/<int:user_id>/update/', CreateProfileView.as_view(), name='profile_update'),
+    
 ]
