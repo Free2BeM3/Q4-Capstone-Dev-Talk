@@ -29,4 +29,11 @@
     <div class="post_caption">
       <p>{{post.caption}}</p>
     </div>
-    {% endfor %}
+    <button><a href='/comment/{{post.id}}/'> Comment Here </a></button>
+      {% for comment in post.comments.all %}
+      <div>
+      <p>{{comment.body}}
+      {{comment.sender}} {{comment.time}}</p>
+      </div>
+      {% endfor %}
+  {% endfor %}
