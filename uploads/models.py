@@ -13,3 +13,15 @@ class Image(models.Model):
 
     def __str__(self):
         return self.caption
+
+class Comment(models.Model):
+    post = models.ForeignKey(Image, on_delete=models.CASCADE, related_name ="comments")
+    sender = models.ForeignKey(Uzer, on_delete=models.CASCADE)
+    body = models.TextField(max_length=500)
+    time = models.DateTimeField(auto_now_add = True)
+
+    class Meta:
+        ordering=['-time']
+
+    def __str__(self):
+        return self.body
