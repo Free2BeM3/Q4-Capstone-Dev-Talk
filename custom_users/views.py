@@ -4,11 +4,13 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from custom_users.forms import LoginForm, SignupForm, ProfileForm
 from django.contrib.auth import login, logout, authenticate
 from django.views.generic import View
+from uploads.models import Image 
 
 # Create your views here.
 
 def home_view(request):
-    return render(request, 'index.html')
+    posts = Image.objects.all()
+    return render(request, 'home.html', {'posts':posts})
 
 def signup_view(request):
     if request.method == 'POST':
