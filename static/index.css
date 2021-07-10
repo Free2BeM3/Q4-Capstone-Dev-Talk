@@ -1,0 +1,54 @@
+.Header {
+    width:100vw;
+    height: 10vh;
+    background-color: rgb(6, 77, 77);
+    border: 1px solid black;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.Header__Left {
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Header__Center {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Header__Right {
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 100%;
+    height: fit-content;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    display: flex;
+    justify-content: center;
+    
+}
+
+.feed {
+    border: 1px solid red;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+}
+
+.Post {
+    border: 1px solid black;
+    width: 400px;
+    margin-top: 15px;
+}
+
