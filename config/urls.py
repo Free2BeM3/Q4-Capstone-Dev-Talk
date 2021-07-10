@@ -15,25 +15,30 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from custom_users.views import login_view, logout_view, signup_view, home_view, profile_view, CreateProfileView
+from custom_users.views import LoginView, logout_view, SignUpView, home_view, profile_view, CreateProfileView, follow, unfollow
 # from uploads.views import upload_view
-from uploads.views import AddPostView, AddComment
+from uploads.views import AddPostView, AddComment, delete_comment, post_likes
 from django.conf.urls.static import static
 from django.conf import settings
 
 urlpatterns = [
     path('', home_view, name='homepage'),
-    path('signup/', signup_view),
-    path('login/', login_view),
+    path('signup/', SignUpView.as_view()),
+    path('login/', LoginView.as_view()),
     path('logout/', logout_view),
     path('admin/', admin.site.urls),
     # Profile Views
-    path('profile/<int:user_id>/', profile_view),
+    path('profile/<int:user_id>/', profile_view, name='profile'),
     path('profile/<int:user_id>/update/', CreateProfileView.as_view(), name='profile_update'),
-    # path('uploads/', upload_view, name='uploads'),
     path('uploads/', AddPostView, name='uploads'),
-     path('comment/<int:pk>/', AddComment),
-    
+    # Comments
+     path('comment/<int:pk>/add', AddComment),
+     path('comment/<int:pk>/remove/', delete_comment),
+    #  Likes
+    path('uploads-like/<int:pk>/', post_likes),
+    # Follows
+    path('follow/<int:user_id>/', follow, name='follow'),
+    path('unfollow/<int:user_id>/', unfollow, name='unfollow'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:

@@ -5,7 +5,7 @@ from django.contrib.auth.models import AbstractUser
 
 
 class Uzer(AbstractUser):
-    avatar = models.ImageField(upload_to='users/%Y/%m/%d/', default='foo.png')
+    avatar = models.ImageField(upload_to='profile_pics/', default='')
     following = models.ManyToManyField('self', symmetrical=False, related_name='follow_person')
     followers = models.ManyToManyField('self', symmetrical=False, related_name='follower')
     bio = models.TextField(max_length=500, blank=True, null=True)

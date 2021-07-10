@@ -7,12 +7,17 @@ class Image(models.Model):
     image = models.ImageField(upload_to='images/')
     created_at = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(Uzer, on_delete=models.CASCADE)
+    likes = models.ManyToManyField(Uzer, related_name='post_likes', symmetrical=False)
 
     class Meta:
         ordering=['-created_at']
 
     def __str__(self):
         return self.caption
+
+    def count_likes(self):
+        return self.likes.count()
+
 
 class Comment(models.Model):
     post = models.ForeignKey(Image, on_delete=models.CASCADE, related_name ="comments")
