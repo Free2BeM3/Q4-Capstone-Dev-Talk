@@ -35,7 +35,6 @@ DEBUG = env('DEBUG')
 ALLOWED_HOSTS = []
 
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -47,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'custom_users',
     'uploads',
+    'notifs',
 ]
 
 MIDDLEWARE = [
@@ -133,7 +133,7 @@ STATICFILES_DIRS = [
     '/var/www/static/',
 ]
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR,'media/')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
