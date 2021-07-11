@@ -8,9 +8,11 @@ from uploads.models import Image
 
 # Create your views here.
 
+
 def home_view(request):
     posts = Image.objects.all()
     return render(request, 'home.html', {'posts':posts})
+
 
 def signup_view(request):
     if request.method == 'POST':
@@ -55,7 +57,6 @@ def profile_view(request, user_id: int):
     return render(request, 'profile.html', {'owner': owner, 'followers': followers, 'following': following})
 
 
-
 class CreateProfileView(LoginRequiredMixin, View):
 
     def get(self, request, user_id):
@@ -86,9 +87,8 @@ class CreateProfileView(LoginRequiredMixin, View):
                 )
                 return redirect(reverse('homepage'))
                
-               
-
 
 # class EditProfileView(LoginRequiredMixin, View):
 
 #     def get(self, request, profile_id)
+

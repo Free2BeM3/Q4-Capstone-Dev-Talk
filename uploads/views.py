@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, HttpResponseRedirect, reverse
 from uploads.models import Image
 from uploads.forms import ImageForm
 
+
 # Create your views here
 # def upload_view(request):
 #     if request.method == "POST":
@@ -14,7 +15,6 @@ from uploads.forms import ImageForm
 #         form = ImageForm()
 #         img=Image.objects.all()
 #     return render(request, 'form.html', {'img':img,'form':form})
-
 
 def AddPostView(request):
     if request.method == 'POST':
