@@ -18,6 +18,7 @@ class ProfileForm(forms.ModelForm):
     class Meta:
         model = Uzer
         fields = [
+            'avatar',
             'bio',
             'location',
             'github',
