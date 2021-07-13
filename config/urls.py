@@ -21,7 +21,7 @@ from uploads.views import AddPostView
 from django.conf.urls.static import static
 from django.conf import settings
 from django.urls import path, include
-from video.urls import include
+
 urlpatterns = [
     path('', home_view, name='homepage'),
     path('signup/', signup_view),
@@ -33,7 +33,7 @@ urlpatterns = [
     path('profile/<int:user_id>/update/', CreateProfileView.as_view(), name='profile_update'),
     # path('uploads/', upload_view, name='uploads'),
     path('uploads/', AddPostView, name='uploads'),
-    path('', include('video.urls'))
+    
     # path('images/', upload_view, name='images'),
     
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
