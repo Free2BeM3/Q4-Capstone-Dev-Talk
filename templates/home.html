@@ -1,3 +1,4 @@
+
 {%if request.user.is_authenticated%} 
     <h1>Welcome, {{request.user.username}}</h1>
     <a href="/profile/{{request.user.id}}/">
@@ -7,6 +8,34 @@
         <button>Logout</button>
     </a>
     {%else%}
+
+    <!DOCTYPE html>
+    <html lang="en">
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, intial-scale">
+        <meta http-eqiuv="X-UA-Compatable" content="ie=edge">
+        <link rel="stylesheet" href="https://cdjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet">
+        <link link rel="stylesheet" href="style.css">
+        <title>Video Back</title>
+    </head>
+    
+    <div class="section">
+    
+      <h1>Welcome to DevTalk</h1>
+      
+      <div class="video-container">
+          <div class="color-overlay"></div>
+          <video autoplay loop>
+              <source src="/home/jessi/projects/Q4/Q4-Capstone-Dev-Talk/DevTalk produced by Jessi.mp4" type="video/mp4">
+          </video>
+      </div>
+    </div>
+    
+
+    
     <div>
         <a href="/login/">
             <button>Login</button>
@@ -30,16 +59,3 @@
       <p>{{post.caption}}</p>
     </div>
     {% endfor %}
-
-    <div class="section">
-
-      <h1>Welcome to DevTalk</h1>
-      
-      <div class="video-container">
-          <div class="color-overlay"></div>
-          <video autoplay loop>
-              <source src="/home/jessi/projects/Q4/Q4-Capstone-Dev-Talk/DevTalk produced by Jessi.mp4" type="video/mp4">
-          </video>
-      </div>
-  
-    </div>  
