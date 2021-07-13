@@ -1,0 +1,61 @@
+
+{%if request.user.is_authenticated%} 
+    <h1>Welcome, {{request.user.username}}</h1>
+    <a href="/profile/{{request.user.id}}/">
+        <button>View Profile</button>
+    </a>
+    <a href="/logout/">
+        <button>Logout</button>
+    </a>
+    {%else%}
+
+    <!DOCTYPE html>
+    <html lang="en">
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, intial-scale">
+        <meta http-eqiuv="X-UA-Compatable" content="ie=edge">
+        <link rel="stylesheet" href="https://cdjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet">
+        <link link rel="stylesheet" href="style.css">
+        <title>Video Back</title>
+    </head>
+    
+    <div class="section">
+    
+      <h1>Welcome to DevTalk</h1>
+      
+      <div class="video-container">
+          <div class="color-overlay"></div>
+          <video autoplay loop>
+              <source src="/home/jessi/projects/Q4/Q4-Capstone-Dev-Talk/DevTalk produced by Jessi.mp4" type="video/mp4">
+          </video>
+      </div>
+    </div>
+    
+
+    
+    <div>
+        <a href="/login/">
+            <button>Login</button>
+        </a>
+        <a href="/signup/">
+            <button>Signup</button>
+        </a>
+
+    </div>
+    {%endif%}
+
+<div class='Post_container'>
+  {%  for post in posts %}
+  <div style="border:1px solid black; width: 400px; margin: auto; margin-top: 15px; display: felx; flex-direction: column; justify-content: center; align-items: center;">
+  
+    <div class"post_header">
+      <p>posted by <a href="/profile/{{post.author.id}}/">{{post.author}}</a> on {{post.created_at}}</p>
+    </div>
+    <img src="/media/{{post.image}}/" alt='post-img' style="width: 200px;"/>
+    <div class="post_caption">
+      <p>{{post.caption}}</p>
+    </div>
+    {% endfor %}
