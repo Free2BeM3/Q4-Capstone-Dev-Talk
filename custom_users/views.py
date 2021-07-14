@@ -12,7 +12,9 @@ from uploads.models import Image
 
 def home_view(request):
     posts = Image.objects.all()
-    return render(request, 'index.html', {'posts':posts})
+    video = 'devtalk.mp4'
+    return render(request, 'index.html', {'posts':posts,'video':video})
+
 
 
 

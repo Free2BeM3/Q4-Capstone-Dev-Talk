@@ -79,6 +79,20 @@
         width: 100%;
     }
     
+    .landingvideo{
+        width: 100%; 
+        height: 90%;
+    }
+
+    /* .activatebutton */
+
+
+    /* @keyframes fadein {
+        from { opacity: 0; }
+        to   { opacity: 1; }
+    } */
+
+
     .color-overlay {
         position: absolute;
         top: 0;
