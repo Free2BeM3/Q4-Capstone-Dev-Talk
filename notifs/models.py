@@ -13,6 +13,6 @@ class Notifs(models.Model):
     sender = models.ForeignKey(
         Uzer, related_name='notif_from', on_delete=models.CASCADE, null=True)
     comment = models.ForeignKey(
-        'Comment', on_delete=models.CASCADE, related_name='comment', blank=True, null=True)
+        Comment, on_delete=models.CASCADE, related_name='comment', blank=True, null=True)
     date = models.DateTimeField(default=timezone.now)
     user_has_seen = models.BooleanField(default=False)
