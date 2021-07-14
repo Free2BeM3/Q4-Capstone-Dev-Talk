@@ -20,6 +20,7 @@ from custom_users.views import LoginView, logout_view, SignUpView, home_view, pr
 from uploads.views import AddPostView, AddComment, delete_comment, post_likes
 from django.conf.urls.static import static
 from django.conf import settings
+from django.urls import path, include
 
 urlpatterns = [
     path('', home_view, name='homepage'),

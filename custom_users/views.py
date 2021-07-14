@@ -9,6 +9,7 @@ from uploads.models import Image
 
 # Create your views here
 
+
 def home_view(request):
     posts = Image.objects.all()
     return render(request, 'index.html', {'posts':posts})
@@ -66,7 +67,6 @@ def profile_view(request, user_id: int):
     following = owner.following.all()
     posts = Image.objects.filter(author=owner)
     return render(request, 'profile.html', {'owner': owner, 'followers': followers, 'following': following, 'posts': posts})
-
 
 
 class CreateProfileView(LoginRequiredMixin, View):
