@@ -43,7 +43,7 @@ urlpatterns = [
     path('follow/<int:user_id>/', follow, name='follow'),
     path('unfollow/<int:user_id>/', unfollow, name='unfollow'),
     # Notifications
-    path('notification/<int:pk>/', notifs_view, name='notifications')
+    path('notification/', notifs_view, name='notifications')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:

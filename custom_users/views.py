@@ -1,3 +1,5 @@
+from django.dispatch.dispatcher import receiver
+from notifs.models import Notifs
 from django.shortcuts import redirect, render, HttpResponse, HttpResponseRedirect, reverse
 from custom_users.models import Uzer
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -5,15 +7,14 @@ from django.contrib.auth.decorators import login_required
 from custom_users.forms import LoginForm, SignupForm, ProfileForm
 from django.contrib.auth import login, logout, authenticate
 from django.views.generic import View
-from uploads.models import Image 
+from uploads.models import Image
 
 # Create your views here
 
 
 def home_view(request):
     posts = Image.objects.all()
-    return render(request, 'index.html', {'posts':posts})
-
+    return render(request, 'index.html', {'posts': posts})
 
 
 class SignUpView(View):
@@ -21,7 +22,6 @@ class SignUpView(View):
     def get(self, request):
         form = SignupForm()
         return render(request, "form.html", {'form': form})
-
 
     def post(self, request):
         form = SignupForm(request.POST)
@@ -34,8 +34,6 @@ class SignUpView(View):
                                             last_name=data['last_name'])
             user.save()
             return HttpResponseRedirect(reverse('homepage'))
-    
-
 
 
 class LoginView(View):
@@ -54,7 +52,7 @@ class LoginView(View):
                 if user:
                     login(request, user)
             return HttpResponseRedirect(reverse('homepage'))
-            
+
 
 def logout_view(request):
     log = logout(request)
@@ -74,44 +72,43 @@ class CreateProfileView(LoginRequiredMixin, View):
     def get(self, request, user_id):
         obj = Uzer.objects.get(id=user_id)
         data = {
-                'avatar': obj.avatar,
-                'bio': obj.bio,
-                'location': obj.location,
-                'github': obj.github,
-                'linkedin': obj.linkedin,
-                'portfolio': obj.portfolio,
-            } 
+            'avatar': obj.avatar,
+            'bio': obj.bio,
+            'location': obj.location,
+            'github': obj.github,
+            'linkedin': obj.linkedin,
+            'portfolio': obj.portfolio,
+        }
         template_name = 'form.html'
         form = ProfileForm(initial=data)
         return render(request, template_name, {'form': form, 'header': 'Create Profile'})
 
     def post(self, request, user_id):
-            obj = Uzer.objects.get(id=user_id)
-            form = ProfileForm(request.POST, request.FILES)
-            if form.is_valid():
-                data = form.cleaned_data
-                profile = Uzer.objects.filter(id=user_id).update(
-                    avatar=data.get('avatar'),
-                    bio=data.get('bio'),
-                    location=data.get('location'),
-                    github=data.get('github'),
-                    linkedin=data.get('linkedin'),
-                    portfolio=data.get('portfolio')
-                )
-                
-            return redirect(reverse('profile', args=[user_id]))
-               
-               
+        obj = Uzer.objects.get(id=user_id)
+        form = ProfileForm(request.POST, request.FILES)
+        if form.is_valid():
+            data = form.cleaned_data
+            profile = Uzer.objects.filter(id=user_id).update(
+                avatar=data.get('avatar'),
+                bio=data.get('bio'),
+                location=data.get('location'),
+                github=data.get('github'),
+                linkedin=data.get('linkedin'),
+                portfolio=data.get('portfolio')
+            )
+
+        return redirect(reverse('profile', args=[user_id]))
+
+
 @login_required
 def follow(request, user_id: int):
     user = Uzer.objects.get(id=user_id)
     follower = Uzer.objects.get(id=request.user.id)
     user.followers.add(follower)
     follower.following.add(user)
-    
-    return HttpResponseRedirect(reverse("profile", args=[user_id]))
+    Notifs.objects.create(reciever=user, sender=follower, notification=2)
 
-    
+    return HttpResponseRedirect(reverse("profile", args=[user_id]))
 
 
 @login_required
@@ -120,6 +117,5 @@ def unfollow(request, user_id: int):
     follower = Uzer.objects.get(id=request.user.id)
     user.followers.remove(follower)
     follower.following.remove(user)
-    
-    return HttpResponseRedirect(reverse("profile", args=[user_id]))
 
+    return HttpResponseRedirect(reverse("profile", args=[user_id]))
