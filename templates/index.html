@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/static/index.css/">
     <title>Document</title>
 </head>
-<body>
+<body scroll="no" style="overflow: hidden">
   {%if request.user.is_authenticated%} 
   <div class="Header">
     <div class="Header__Left">
@@ -61,26 +61,26 @@
        
    </div>
    {%else%}
-   <div class="Header">
+   <!-- <div class="Header"> -->
     <div class="Header__Left">
-        <h3>DEV-Talk</h3>
+        <!-- <h3>DEV-Talk</h3> -->
     </div>
 
-    <div class="Header__Center">
+    <!-- <div class="Header__Center"> -->
         <!-- Nav Links -->
         
         
     </div>
 
-    <div class="Header__Right">
+    <!-- <div class="Header__Right"> -->
         
-        <a href="/login/"><button>Login</button></a>
-        <a href="/signup/"><button>Signup</button></a>
+        <!-- <a href="/login/"><button>Login</button></a>
+        <a href="/signup/"><button>Signup</button></a> -->
     </div>
    </div>
 
   
-    <h1>Welcome to DevTalk</h1>
+    <!-- <h1>Welcome to DevTalk</h1> -->
     <!-- <embed type="video/mp4" src="/media/images/{{video}}/" width="400" height="300">   -->
 
    <div class="video-container">
