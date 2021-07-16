@@ -1,3 +1,5 @@
+
+
 .Header {
     width:100vw;
     height: 10vh;
@@ -52,3 +54,236 @@
     margin-top: 15px;
 }
 
+.section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+    
+    .section h1 {
+    text-align: center;
+    font-size: 6rem;
+    font-family: "Cookie";
+    padding: 20px;
+    margin: 15px;
+    z-index: 1;
+    opacity: 0.7;
+}
+    
+    /* .video-container {
+        position: fixed;
+		right: 0;
+		bottom: 0
+        min-width: 100%;
+		min-height: 100%;
+} */
+ 
+
+	.video-container {
+	z-index: -1;
+	height: 5vh;
+	min-width: 90%;
+
+
+}
+	.landingvideo{
+    width: 100%; 
+	top: 0;
+	height: 5vh;
+}	
+	.body {
+	overflow: hidden;
+	
+}
+
+
+/* 
+    .btn {
+        height:auto;
+        width: ;
+        background-color: #ddd;
+        border: none;
+        color: #B33F40;
+        padding: 16px 32px;
+        text-align: center;
+        font-size: 16px;
+        margin: 4px 2px;
+        opacity: 0.6;
+        transition: 0.3s;
+}
+      
+      .btn:hover {
+        background-color: #3e8e41;
+        color: white; */
+/* } */
+
+
+
+    /* .color-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: lightblue;
+        width: 100%;
+        height: 100vh;
+        opacity: 0.5;
+} */
+    
+    /* .wrapper {
+
+    } */
+
+/* ----------------------------------------------------------------------------------- */
+
+@import "compass/css3";
+
+@import "compass/css3";
+@import url('https://fonts.googleapis.com/css?family=Lobster');
+@font-face {
+  font-family: 'ModernPictogramsNormal';
+  src: url("http://s202540075.onlinehome.us/codepen/fonts/modernpics-webfont.eot");
+  src: url("http://s202540075.onlinehome.us/codepen/fonts/modernpics-webfont.eot?#iefix") format("embedded-opentype"), url("http://s202540075.onlinehome.us/codepen/fonts/modernpics-webfont.woff") format("woff"), url("http://s202540075.onlinehome.us/codepen/fonts/modernpics-webfont.ttf") format("truetype"), url("http://s202540075.onlinehome.us/codepen/fonts/modernpics-webfont.svg#ModernPictogramsNormal") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+@import "compass/css3";
+@import url(https://fonts.googleapis.com/css?family=Lobster);
+body{
+	margin: 0;
+	padding:0;
+	background:url('http://www.bradysammons.com/codepen/darkui/noise.png') repeat;
+	padding:30px;
+}
+a, input[type='radio'] + label{
+		text-align: center;
+		display: inline-block;
+		text-decoration: none;
+		cursor: pointer;
+		font-family: 'Trebuchet MS', Helvetica, sans-serif;	
+}
+
+
+/* fieldset{
+	border:1px solid #222;
+	@include border-radius(8px);
+	margin:20px 0 0 0;
+	min-height: 90px;
+	line-height: 90px;
+	position: relative;
+	float: left;
+	margin-right: 20px;
+	padding:20px;
+	h2{
+		font-family: 'Lobster', cursive;
+		font-weight: normal;
+		text-shadow:0 1px 0 rgba(255,255,255,.12);
+		display: inline-block;
+		margin: 0;
+		line-height: 1.5;
+		position: absolute;
+		top: -20px;
+		background:url('http://www.bradysammons.com/codepen/darkui/noise.png') repeat;
+		padding: 0 5px 0 10px;
+	}
+}
+input[type='radio']{
+	display: none;
+}
+$btn_width:110px;
+$btn_height:$btn_width * .3; */
+/* -------------------
+	Default State
+-------------------- */
+a.glowBtn, input[type='radio'] + label{
+	z-index: 10;
+	margin: 0 10px 10px 0;
+	width: $btn_width * 1.05;
+	height: $btn_height * 1.13;
+	line-height: $btn_height * 1.1;
+	position: relative;
+	font-size: $btn_width * .12;
+	letter-spacing: .1em;
+	color: #0e0e0e;
+	text-shadow: 0 1px 0 rgba(255,255,255,.1);
+	font-weight: bold;
+	@include background-image(linear-gradient(#111,#000));
+	@include border-radius(3px);
+	@include box-shadow(
+		//-----Button Beveling-----
+		//top dark bevel
+		0 -1px 0 rgba(0,0,0,.2),
+		//full bevel
+		0 0 0 1px rgba(0,0,0,.3),
+		//bottom highlight bevel
+		0 1px 0 rgba(255,255,255,.05),
+		//slight outer glow
+		0 0 3px rgba(255,255,255,.2));
+}
+
+/* //This is the style for the actual Button */
+a.glowBtn:after, input[type='radio'] + label:after{
+	z-index: -1;
+	content: '';
+	cursor: pointer;
+	/* // center content */
+	top:$btn_height * .06;
+	margin-left: 50%;
+	left: -$btn_width /2;
+	width: $btn_width;
+	height: $btn_height;
+	display: block;
+	position: absolute;
+	@include background-image(linear-gradient(#444,#373738));
+	@include box-shadow(
+		inset 0 2px 1px -1px rgba(255,255,255,.2),
+		inset 0 -2px 1px -1px rgba(0,0,0,.2),
+		//-----Drop Shadow-----
+		0 12px 12px rgba(0,0,0,.5),
+		0 4px 6px rgba(0,0,0,.3));
+	@include border-radius(2px);
+}
+/* -------------------
+	Hover States
+-------------------- */
+a.glowBtn:hover, a.hover, input[type='radio'] + label:hover{
+	color: #00ccff;
+	text-shadow:0 -1px 0 rgba(0,0,0,.4);
+}
+
+a.glowBtn:hover, a.hover:after, input[type='radio'] + label:hover:after{
+	@include background-image(linear-gradient(#545454,#373738));
+}
+
+a.glowBtn:hover, a.hover:after, input[type='radio'] + label:hover:after{
+	@include background-image(linear-gradient(#545454,#373738));
+}
+/* -------------------
+	Active States
+-------------------- */
+a.glowBtn:active, a.active,a.active:hover, input[type='radio']:checked + label{
+	color: #00ccff;
+	text-shadow:0 -1px 0 rgba(0,0,0,.3),0 0px 30px rgba(0,255,255,.7);
+	@include box-shadow(
+		//-----Button Beveling-----
+		//top dark bevel
+		0 -1px 0 rgba(0,193,255,.2),
+		//full bevel
+		0 0 0 1px rgba(0,0,0,.4),
+		//bottom highlight bevel
+		0 1px 0 rgba(255,255,255,.05),
+		//slight outer glow
+		0 0 20px rgba(0,193,255,.1),
+		0 0 30px rgba(0,193,255,.1));
+}
+a.glowBtn:active, a.active,a.active:hover{
+	text-shadow:0 -1px 0 rgba(0,0,0,1),0 0px 30px rgba(0,255,255,1),0 0px 50px rgba(0,255,255,1);
+	}
+a.glowBtn:active:after, a.active:after,a.active:hover:after, input[type='radio']:checked + label:after{
+	@include background-image(linear-gradient(#262627, #2d2d2e));
+	@include box-shadow(
+		inset 0 5px 6px rgba(0,0,0,.3), 
+		inset 0 0 4px rgba(0,0,0,.9), 0 0 0 black);

@@ -16,9 +16,10 @@ def home_view(request):
     if request.user.is_authenticated:
         notif_count = Notifs.objects.filter(reciever=request.user).filter(user_has_seen=False).count()
         posts = Image.objects.all()
-        return render(request, 'index.html', {'posts': posts, 'notifs': notif_count})
+        return render(request, 'index.html', {'posts': posts, 'notifs': notif_count, })
     else:
-        return render(request, 'index.html')
+        video = 'devtalk.mp4'
+        return render(request, 'index.html', {'video': video})
 
 def all_users(request):
     users = Uzer.objects.all()
