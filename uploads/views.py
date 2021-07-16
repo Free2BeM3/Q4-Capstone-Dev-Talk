@@ -35,9 +35,10 @@ def AddComment(request, pk):
             )
         commenter = request.user
         owner = target_post.author
+        message = "Just commented on your Post."
         if commenter != owner:
             notify = Notifs.objects.create(
-                reciever=owner, sender=commenter, comment=posts)
+                reciever=owner, sender=commenter, comment=posts, message=message)
         return HttpResponseRedirect(reverse('homepage'))
 
     form = AddCommentForm()
@@ -60,6 +61,7 @@ def post_likes(request, pk):
     else:
         post.likes.add(request.user)
         if user != owner:
+            message = "Just liked your post."
             notify = Notifs.objects.create(
-                reciever=owner, sender=user, notification=1)
+                reciever=owner, sender=user, message=message)
     return HttpResponseRedirect(reverse('homepage'))
