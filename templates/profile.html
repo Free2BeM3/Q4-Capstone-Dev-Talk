@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,15 +8,16 @@
     <link rel="stylesheet" href="/static/profile.css">
     <title>Document</title>
 </head>
+
 <body>
     <div class="container">
         <div class="Header">
             <div class="Header__Left">
                 <h3>DEV-Talk</h3>
-                
+
                 {{owner.username}}
             </div>
-            <img src="/media/images/{{owner.avatar}}">
+            <img src="/media/images/{{owner.avatar}}" class="User_Ava">
             <div class="Header__Center">
                 <!-- Nav Links -->
                 <a href="/">
@@ -23,50 +25,52 @@
                 </a>
                 <p>Follows: {{user.followers.count}}</p>
                 <p>Following: {{user.following.count}}</p>
-            {%if request.user.id == owner.id%}
-            <a href="/profile/{{owner.id}}/update/">
-            <button>Edit Profile</button>
-            </a>
-            <a href="/uploads/">
-            <button>New Post</button>
-            </a>
-        {%endif%}
-        {%if request.user.id != owner.id%} 
-        {%if request.user in owner.followers.all%} 
-        <button>
-            <a href="/unfollow/{{owner.id}}/">UnFollow</a>
-          </button>
-          {%else%}
-          <button>
-            <a href="/follow/{{owner.id}}/">Follow</a>
-          </button>
-          {%endif%}
-          {%endif%}
-        </div>
-                
-        
+
+                {%if request.user.id == owner.id%}
+                <a href="/profile/{{owner.id}}/update/">
+                    <button>Edit Profile</button>
+                </a>
+                <a href="/uploads/">
+                    <button>New Post</button>
+                </a>
+                {%endif%}
+                {%if request.user.id != owner.id%}
+                {%if request.user in owner.followers.all%}
+                <button>
+                    <a href="/unfollow/{{owner.id}}/">UnFollow</a>
+                </button>
+                {%else%}
+                <button>
+                    <a href="/follow/{{owner.id}}/">Follow</a>
+                </button>
+                {%endif%}
+                {%endif%}
+            </div>
+
+
             <div class="Header__Right">
                 <!-- Logout Button -->
                 <a href="/logout/"><button>Logout</button></a>
             </div>
-           </div>
-       
-       <div>
-           <p>{%if owner.bio%}Bio: {{owner.bio}}{%endif%}</p>
-           <div>
-               <p>{%if owner.location%}Location: {{owner.location}} {%endif%}</p>
-               
-               <p>{%if owner.portfolio%} <a href="{{owner.portfolio}}" target="blank">Portfolio</a>{{%endif%}</p>
-               <p>{%if owner.github%} <a href='{{owner.github}}' target="blank"> Github</a>{%endif%}</p>
-               <p>{%if owner.linkedin%}<a href="{{owner.linkedin}}" target='blank'>Linkedin</a>{%endif%}</p>
-           </div>
-       </div>
+        </div>
+
+        <div>
+            <p>{%if owner.bio%}Bio: {{owner.bio}}{%endif%}</p>
+            <div>
+                <p>{%if owner.location%}Location: {{owner.location}} {%endif%}</p>
+
+                <p>{%if owner.portfolio%} <a href="{{owner.portfolio}}" target="blank">Portfolio</a>{{%endif%}</p>
+                <p>{%if owner.github%} <a href='{{owner.github}}' target="blank"> Github</a>{%endif%}</p>
+                <p>{%if owner.linkedin%}<a href="{{owner.linkedin}}" target='blank'>Linkedin</a>{%endif%}</p>
+            </div>
+        </div>
     </div>
-    <div class='user__uploads' style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center; border: 3px ridge black;">
-        {%for post in posts%} 
+    <div class='user__uploads'
+        style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center; border: 3px ridge black;">
+        {%for post in posts%}
         <div style="width: 300px; border: 3px solid black; margin-left: 15px; margin-top: 10px;">
             <div>
-                <img src='/media/{{post.image}}/' style="width: 300px;"/>
+                <img src='/media/{{post.image}}/' style="width: 300px;" />
             </div>
             <div>
                 {{post.caption}}
@@ -75,4 +79,5 @@
         {%endfor%}
     </div>
 </body>
+
 </html>
