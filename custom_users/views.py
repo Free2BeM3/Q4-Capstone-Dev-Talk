@@ -13,8 +13,17 @@ from uploads.models import Image
 
 
 def home_view(request):
-    posts = Image.objects.all()
-    return render(request, 'index.html', {'posts': posts})
+    if request.user.is_authenticated:
+        notif_count = Notifs.objects.filter(reciever=request.user).filter(user_has_seen=False).count()
+        posts = Image.objects.all()
+        return render(request, 'index.html', {'posts': posts, 'notifs': notif_count})
+    else:
+        return render(request, 'index.html')
+
+def all_users(request):
+    users = Uzer.objects.all()
+    return render(request,'users.html', {'users': users})
+
 
 
 class SignUpView(View):
@@ -106,7 +115,8 @@ def follow(request, user_id: int):
     follower = Uzer.objects.get(id=request.user.id)
     user.followers.add(follower)
     follower.following.add(user)
-    Notifs.objects.create(reciever=user, sender=follower, notification=2)
+    message = 'Just followed you.'
+    Notifs.objects.create(reciever=user, sender=follower, message=message)
 
     return HttpResponseRedirect(reverse("profile", args=[user_id]))
 

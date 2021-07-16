@@ -14,5 +14,6 @@ class Notifs(models.Model):
         Uzer, related_name='notif_from', on_delete=models.CASCADE, null=True)
     comment = models.ForeignKey(
         Comment, on_delete=models.CASCADE, related_name='comment', blank=True, null=True)
+    message = models.CharField(max_length=150, default="")
     date = models.DateTimeField(default=timezone.now)
     user_has_seen = models.BooleanField(default=False)

@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from custom_users.views import LoginView, logout_view, SignUpView, home_view, profile_view, CreateProfileView, follow, unfollow
+from custom_users.views import LoginView, logout_view, SignUpView, home_view, profile_view, CreateProfileView, follow, unfollow, all_users
 # from uploads.views import upload_view
 from uploads.views import AddPostView, AddComment, delete_comment, post_likes
 from notifs.views import notifs_view
@@ -34,6 +34,8 @@ urlpatterns = [
     path('profile/<int:user_id>/update/',
          CreateProfileView.as_view(), name='profile_update'),
     path('uploads/', AddPostView, name='uploads'),
+    # all users
+    path('users/', all_users, name='users'),
     # Comments
     path('comment/<int:pk>/add', AddComment),
     path('comment/<int:pk>/remove/', delete_comment),
