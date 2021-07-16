@@ -18,6 +18,7 @@ from django.urls import path
 from custom_users.views import LoginView, logout_view, SignUpView, home_view, profile_view, CreateProfileView, follow, unfollow
 # from uploads.views import upload_view
 from uploads.views import AddPostView, AddComment, delete_comment, post_likes
+from notifs.views import notifs_view
 from django.conf.urls.static import static
 from django.conf import settings
 from django.urls import path, include
@@ -30,17 +31,20 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # Profile Views
     path('profile/<int:user_id>/', profile_view, name='profile'),
-    path('profile/<int:user_id>/update/', CreateProfileView.as_view(), name='profile_update'),
+    path('profile/<int:user_id>/update/',
+         CreateProfileView.as_view(), name='profile_update'),
     path('uploads/', AddPostView, name='uploads'),
     # Comments
-     path('comment/<int:pk>/add', AddComment),
-     path('comment/<int:pk>/remove/', delete_comment),
+    path('comment/<int:pk>/add', AddComment),
+    path('comment/<int:pk>/remove/', delete_comment),
     #  Likes
     path('uploads-like/<int:pk>/', post_likes),
     # Follows
     path('follow/<int:user_id>/', follow, name='follow'),
     path('unfollow/<int:user_id>/', unfollow, name='unfollow'),
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    # Notifications
+    path('notification/', notifs_view, name='notifications')
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,

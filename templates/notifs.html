@@ -1,0 +1,6 @@
+{% for n in notifs %}
+<strong>{{n.sender}}</strong> just followed you!
+<strong>{{n.sender}}</strong> just liked your post!
+<strong>{{n.sender}}</strong> just commented <strong>{{n.comment}}</strong>
+<p><strong>{{n.date}}</strong></p>
+{% endfor %}
