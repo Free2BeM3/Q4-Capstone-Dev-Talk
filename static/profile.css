@@ -1,4 +1,118 @@
-.User_Ava {
-    width: 60px;
+body {
+    background-color: rgb(32, 32, 32);
+}
+/* Header  */
+.container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-image: url(http://www.bradysammons.com/codepen/darkui/noise.png);
+    
+}
+
+.Header {
+    width: 100%;
+    height: 10%;
+    background-color: rgb(6, 138, 214);
+    border-bottom: 1px solid rgb(57, 60, 61);
+    border-bottom-left-radius: 14px;
+    border-bottom-right-radius: 14px;
+    display: flex;
+    flex-direction: row;
+}
+
+.Header__Left {
+    width: 20%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.Header__Left > p {
+    margin-left: 5px;
+}
+
+.Header__Center {
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.Header__Left > img {
+    margin-left: 15px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
 }
+
+.flex__hard {
+    display: flex;
+    flex-direction: column;
+    margin:0 0 0 15px;
+}
+
+.Header__Right {
+    width: 20%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+button {
+    width: 125px;
+    height: 45px;
+    border-radius: 14px;
+    color: aqua;
+    background-image: url(http://www.bradysammons.com/codepen/darkui/noise.png);
+    font-size: large;
+    font-weight: bold;
+}
+
+
+/* UserInfo / Bio */
+
+.User__Info {
+    text-align: center;
+}
+
+.bio {
+    border-top: 1px dashed rgb(58, 54, 54);
+    border-bottom: 1px dashed rgb(58, 54, 54);
+}
+
+.Link {
+    text-decoration: none;
+    color:aqua;
+    font-size: large;  
+}
+
+.user__uploads {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow-y: scroll; 
+}
+
+.user__uploads::-webkit-scrollbar {
+    display: none;
+}
+
+.card {
+    width: 300px;
+    border: 3px solid aqua;
+    border-radius: 30px;
+    margin-left: 15px;
+    margin-top: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
