@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'custom_users',
     'uploads',
     'notifs',
+    'community',
 ]
 
 MIDDLEWARE = [
