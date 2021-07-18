@@ -9,7 +9,7 @@
   <title>Document</title>
 </head>
 
-<body scroll="no" style="overflow: hidden">
+<body >
   {%if request.user.is_authenticated%}
   <div class="Header">
     <div class="Header__Left">
@@ -20,13 +20,16 @@
       <!-- Nav Links -->
 
       <a href="/profile/{{request.user.id}}/">
-        <button><strong>{{request.user.username}}</strong></stron></button>
+        <button><img src="/media/images/{{request.user.avatar}}/" style="width: 30px; border-radius: 50%;"><strong>{{request.user.username}}</strong></stron></button>
       </a>
       <a href="/uploads/"><button><strong>+Add</strong></button></a>
       <button><a href="/notification/"><strong>Notifications:{{notifs}} </strong></a></button>
 
       <a href="/users/">
-        <button><strong>People</strong></button>
+        <button><strong>Search Users</strong></button>
+      </a>
+      <a href="/community/">
+        <button><strong>Community</strong></button>
       </a>
     </div>
 
@@ -41,82 +44,63 @@
       {% for post in posts %}
       <div class='Post'>
 
-        <div class="post_header">
-          <p>posted by <a href="/profile/{{post.author.id}}/">{{post.author}}</a> on {{post.created_at}}</p>
+        <div class="Post__Header">
+          <p>posted by <a href="/profile/{{post.author.id}}/">@{{post.author}}</a> on {{post.created_at}}</p>
+          <img src="/media/{{post.image}}/" alt='post-img'  />
         </div>
-        <img src="/media/{{post.image}}/" alt='post-img' style="width: 200px;" />
-        <div class="post_caption">
-          <p>{{post.caption}}</p>
+        <div class="Post_Caption">
+          <h2>{{post.caption}}</h2>
         </div>
-        <div>
+        <div class="Post__Actions">
           <button><a href='/comment/{{post.id}}/add'> Comment Here </a></button>
 
-          <a href="/uploads-like/{{post.id}}/"><button>❤{{post.likes.count}}</button></a>
+          <a href="/uploads-like/{{post.id}}/"><button>❤{%if post.likes.count > 0%}{{post.likes.count}}{%endif%}</button></a>
 
         </div>
-        {% for comment in post.comments.all %}
-        <div>
-          {%if request.user.id == post.author.id%}
-          <a href="/comment/{{comment.id}}/remove/"><button class="delete">X</button></a>
-          {%endif%}
-          <p>{{comment.body}}
-            {{comment.sender}} {{comment.time}}</p>
+        {%if post.comments.count > 0%}
+        <div class="Comment__Container">
+          {% for comment in post.comments.all %}
+          <div class="comments">
+            <div class="comment__deets">
+            <div id="comment__user">
+                <h4>Posted by: <img src="/media/images/{{comment.sender.avatar}}/" style="width: 25px; border-radius: 50%;"> {{comment.sender}} on {{comment.time}}</h4>
+              </div>
+            {%if request.user.id == post.author.id or request.user.id == comment.sender.id%}
+            <a href="/comment/{{comment.id}}/remove/"><button class="delete">X</button></a>
+         
+            {%endif%}
+          </div>
+          <div class="comment__body">
+          <p><strong>{{comment.body}}</strong></p>
+          </div>
+          
+          </div>
+          {% endfor %}
         </div>
-        {% endfor %}
-        {%endfor%}
+        {%endif%}
       </div>
+      {%endfor%}
 
       {%else%}
-      <div class="Header">
-        <div class="Header__Left">
-          <h3>DEV-Talk</h3>
-        </div>
-
-        <!-- <div class="Header__Center"> -->
-        <!-- Nav Links -->
-
-
+      
+      
+  <div class="video__container">
+    <div id='wrapper'>
+      <!-- <fieldset> -->
+        <!-- <h2>Buttons!</h2> -->
+        <a href="/login/" class='glowBtn'>Log In</a>
+        <a href="/signup/" class='glowBtn hover'>Sign Up</a>
+        <!-- <a class='glowBtn active'>Activate Homepage</a> -->
+        <!-- </fieldset> -->
       </div>
-
-      <!-- <div class="Header__Right"> -->
-
-      <!-- <a href="/login/"><button>Login</button></a>
-        <a href="/signup/"><button>Signup</button></a> -->
-    </div>
-  </div>
-
-
-  <!-- <h1>Welcome to DevTalk</h1> -->
-  <!-- <embed type="video/mp4" src="/media/images/{{video}}/" width="400" height="300">   -->
-
-  <div class="video-container">
-    <video controls autoplay=true class="landingvideo">
-      <source src="/media/images/{{video}}/" type="video/mp4">
+    <video class="landingvideo"  autoPlay controls >
+      <source src="/media/images/{{video}}" type="video/mp4">
 
     </video>
   </div>
-  </div>
 
-  <div id='wrapper'>
-    <!-- <fieldset> -->
-    <!-- <h2>Buttons!</h2> -->
-    <a class='glowBtn'>Log In</a>
-    <a class='glowBtn hover'>Sign Up</a>
-    <a class='glowBtn active'>Activate Homepage</a>
-    <!-- </fieldset> -->
-
-
-
-    <!-- <iframe width="420" height="315"
-src="https://www.youtube.com/embed/tgbNymZ7vqY">
-</iframe> -->
-
-
-
-
-
-
-
+  
+ 
 
     {%endif%}
 

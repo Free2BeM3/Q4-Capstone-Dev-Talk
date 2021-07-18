@@ -15,8 +15,15 @@ from uploads.models import Image
 def home_view(request):
     if request.user.is_authenticated:
         notif_count = Notifs.objects.filter(reciever=request.user).filter(user_has_seen=False).count()
-        posts = Image.objects.all()
-        return render(request, 'index.html', {'posts': posts, 'notifs': notif_count, })
+        posts = Image.objects.filter(author=request.user)
+        follow_posts = []
+
+        for user in request.user.following.all():
+            for post in Image.objects.filter(author=user):
+                follow_posts.append(post)
+        follow_posts.extend(posts)
+        all_posts = follow_posts
+        return render(request, 'index.html', {'posts': all_posts, 'notifs': notif_count, })
     else:
         video = 'devtalk.mp4'
         return render(request, 'index.html', {'video': video})

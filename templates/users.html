@@ -4,30 +4,83 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/users.css/">
     <title>Document</title>
 </head>
 <body>
-    {%for user in users%} 
+   <div class="container">
+    <div class="Header">
+        <div class="Header__Left">
+            <h3>DEV-Talk</h3>
 
-    <div class="User__Card">
-        <div id="User__Image">
-            <img src="/media/images/{{user.avatar}}/" style="width: 150px; border-radius: 50%;">
-            <h3>{{user.username}}</h3>
-            <a href="/profile/{{user.id}}/"><button>View Profile</button></a>
+            
+            
+        </div>
+        <div class="Header__Center">
+            <!-- Nav Links -->
+            <a href="/">
+                <button>home</button>
+            </a>
+
+            <a href="/profile/{{request.user.id}}/">
+         <div class="profile__button">
+                <img src="/media/images/{{request.user.avatar}}" class="User_Ava" style="width: 40px; height: 40px; border-radius: 50%;">
+                <p><strong>{{request.user.username}}</strong></p>
+            </div>
+        </a>
+        
+           
+
         </div>
 
 
-
-
-
-
-
-
+        <div class="Header__Right">
+            <!-- Logout Button -->
+            <a href="/users/">
+                <button>
+                    People
+                </button>
+            </a>
+            <a href="/community/">
+                <button>
+                Community
+                </button>
+            </a>
+            <a href="/logout/"><button>Logout</button></a>
+        </div>
     </div>
 
 
 
 
+
+
+
+
+
+
+    <div class="Card__Gallery">
+        {%for user in users%} 
+    <div class="User__Card">
+        <div id="Card__Top">
+            <div class="Image">
+            {%if user.avatar%} 
+            <img src="/media/images/{{user.avatar}}/"  style="width: 70px; border-radius: 50%;">
+            {%else%}
+            <img src="/media/images/default.png/" style="width: 70px; border-radius: 50%;">
+            {%endif%}
+        </div>
+            <div class="User__Info">
+                <h3>{{user.username}}</h3>
+            </div>
+        </div>
+            <div class="profile__link">
+                <a href="/profile/{{user.id}}/"><button>View Profile</button></a>
+            </div>
+        
+    </div>
     {%endfor%}
+    </div>
+   </div>
 </body>
 </html>
