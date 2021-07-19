@@ -1,5 +1,54 @@
-{% for n in notifs %}
-<strong>{{n.sender}}</strong> {{n.message}}
+<!DOCTYPE html>
+<html lang="en">
 
-<p><strong>{{n.date}}</strong></p>
-{% endfor %}
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/static/index.css/">
+  <title>Document</title>
+</head>
+
+<body>
+
+  {%if request.user.is_authenticated%}
+  <div class="Header">
+    <div class="Header__Left">
+      <h3>DEV-Talk</h3>
+    </div>
+
+    <div class="Header__Center">
+      <!-- Nav Links -->
+
+      <a href="/profile/{{request.user.id}}/">
+        <button><strong>{{request.user.username}}</strong></stron></button>
+      </a>
+      <a href="/uploads/"><button><strong>+Add</strong></button></a>
+
+
+      <a href="/users/">
+        <button><strong>People</strong></button>
+      </a>
+
+      <a href="/community/">
+        <button><strong>Community</strong></button>
+      </a>
+    </div>
+
+    <div class="Header__Right">
+      <!-- Logout Button -->
+      <a href="/logout/"><button>Logout</button></a>
+    </div>
+  </div>
+  <div class="container">
+
+
+    {% for n in notifs %}
+    <strong>{{n.sender}}</strong> {{n.message}}
+
+    <p><strong>{{n.date}}</strong></p>
+    {% endfor %}
+    {%endif%}
+</body>
+
+</html>
