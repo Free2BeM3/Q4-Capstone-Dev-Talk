@@ -1,58 +1,78 @@
-{%if request.user.is_authenticated%}
-<div class="Header">
-  <div class="Header__Left">
-    <h3>DEV-Talk</h3>
-  </div>
+<!DOCTYPE html>
+<html lang="en">
 
-  <div class="Header__Center">
-    <!-- Nav Links -->
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/static/index.css/">
+  <title>Document</title>
+</head>
 
-    <a href="/profile/{{request.user.id}}/">
-      <button><strong>{{request.user.username}}</strong></stron></button>
-    </a>
-    <a href="/uploads/"><button><strong>+Add</strong></button></a>
-    <button><a href="/notification/"><strong>Notifications:{{notifs}} </strong></a></button>
+<body>
 
-    <a href="/users/">
-      <button><strong>People</strong></button>
-    </a>
-  </div>
-
-  <div class="Header__Right">
-    <!-- Logout Button -->
-    <a href="/logout/"><button>Logout</button></a>
-  </div>
-</div>
-<div class="container">
-
-
-  <div class="Community__Feed">
-    {% for post in posts %}
-    <div class='Post'>
-
-      <div class="post_header">
-        <p>posted by <a href="/profile/{{post.author.id}}/">{{post.author}}</a> on {{post.created_at}}</p>
-      </div>
-      <img src="/media/{{post.image}}/" alt='post-img' style="width: 200px;" />
-      <div class="post_caption">
-        <p>{{post.caption}}</p>
-      </div>
-      <div>
-        <button><a href='/comment/{{post.id}}/add'> Comment Here </a></button>
-
-        <a href="/uploads-like/{{post.id}}/"><button>❤{{post.likes.count}}</button></a>
-
-      </div>
-
-      {% for comment in post.comments.all %}
-      <div>
-        {%if request.user.id == post.author.id%}
-        <a href="/comment/{{comment.id}}/remove/"><button class="delete">X</button></a>
-        {%endif%}
-        <p>{{comment.body}}
-          {{comment.sender}} {{comment.time}}</p>
-      </div>
-      {% endfor %}
-      {% endfor %}
+  {%if request.user.is_authenticated%}
+  <div class="Header">
+    <div class="Header__Left">
+      <h3>DEV-Talk</h3>
     </div>
-    {%endif%}
+
+    <div class="Header__Center">
+      <!-- Nav Links -->
+
+      <a href="/profile/{{request.user.id}}/">
+        <button><strong>{{request.user.username}}</strong></stron></button>
+      </a>
+      <a href="/community/uploads/"><button><strong>+Add</strong></button></a>
+      <button><a href="/notification/"><strong>Notifications:{{notifs}} </strong></a></button>
+
+      <a href="/users/">
+        <button><strong>People</strong></button>
+      </a>
+
+      <a href="/community/">
+        <button><strong>Community</strong></button>
+      </a>
+    </div>
+
+    <div class="Header__Right">
+      <!-- Logout Button -->
+      <a href="/logout/"><button>Logout</button></a>
+    </div>
+  </div>
+  <div class="container">
+
+
+    <div class="Feed">
+      {% for post in posts %}
+      <div class='Post'>
+
+        <div class="post_header">
+          <p>posted by <a href="/profile/{{post.author.id}}/">{{post.author}}</a> on {{post.created_at}}</p>
+        </div>
+        <img src="/media/{{post.image}}/" alt='post-img' style="width: 200px;" />
+        <div class="post_caption">
+          <p><a href="/community/post/{{post.id}}/">{{post.caption}}</a></p>
+        </div>
+        <div>
+          <button><a href='/comment/{{post.id}}/add'> Comment Here </a></button>
+
+          <a href="/uploads-like/{{post.id}}/"><button>❤{{post.likes.count}}</button></a>
+
+        </div>
+
+        {% for comment in post.comments.all %}
+        <div>
+          {%if request.user.id == post.author.id%}
+          <a href="/comment/{{comment.id}}/remove/"><button class="delete">X</button></a>
+          {%endif%}
+          <p>{{comment.body}}
+            {{comment.sender}} {{comment.time}}</p>
+        </div>
+        {% endfor %}
+        {% endfor %}
+      </div>
+      {%endif%}
+</body>
+
+</html>
