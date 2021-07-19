@@ -29,7 +29,7 @@ def AddCPostView(request):
                 image=data['image'],
                 author=request.user,
             )
-        return HttpResponseRedirect(reverse('homepage'))
+        return HttpResponseRedirect(reverse('community_feed'))
     form = CIForm()
     return render(request, 'form.html', {'form': form})
 
@@ -51,7 +51,7 @@ def AddCComment(request, pk):
         if commenter != owner:
             notify = Notifs.objects.create(
                 reciever=owner, sender=commenter, message=message)
-        return HttpResponseRedirect(reverse('homepage'))
+        return HttpResponseRedirect(reverse('community_feed'))
 
     form = RespondForm()
     return render(request, 'form.html', {'form': form})
@@ -61,7 +61,7 @@ def delete_ccomment(request, pk):
     comment = CommunityComment.objects.get(pk=pk)
     if request.user.id == comment.sender.id:
         comment.delete()
-        return redirect('homepage')
+        return redirect('community_feed')
 
 @login_required
 def cpost_likes(request, pk):

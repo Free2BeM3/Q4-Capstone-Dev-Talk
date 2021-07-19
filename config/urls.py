@@ -41,7 +41,7 @@ urlpatterns = [
     # all users
     path('users/', all_users, name='users'),
     # Comments
-    path('comment/<int:pk>/add', AddComment),
+    path('comment/<int:pk>/add/', AddComment),
     path('community/comment/<int:pk>/add/', AddCComment),
     path('comment/<int:pk>/remove/', delete_comment),
     path('community/comment/<int:pk>/remove/', delete_ccomment),

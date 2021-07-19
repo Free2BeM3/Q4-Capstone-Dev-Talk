@@ -58,7 +58,7 @@
                 {%if request.user.is_authenticated%}
                 <a href="/users/">
                     <button>
-                        People
+                        Search Users
                     </button>
                 </a>
                 <a href="/community/">
@@ -81,7 +81,7 @@
             <h4>{%if owner.location%}Location: {{owner.location}} {%endif%}</h4>
             <div class="bio">
 
-                <h4 >{%if owner.portfolio%} <a class="Link" href="{{owner.portfolio}}" target="blank">Portfolio</a>{{%endif%}</h4>
+                <h4 >{%if owner.portfolio%} <a class="Link" href="{{owner.portfolio}}" target="blank">Portfolio</a>{%endif%}</h4>
                 <h4 >{%if owner.github%} <a class="Link" href='{{owner.github}}' target="blank"> Github</a>{%endif%}</h4>
                 <h4 >{%if owner.linkedin%}<a class="Link" href="{{owner.linkedin}}" target='blank'>Linkedin</a>{%endif%}</h4>
             </div>
