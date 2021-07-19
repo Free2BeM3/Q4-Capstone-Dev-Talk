@@ -55,13 +55,13 @@
           <p><a href="/community/post/{{post.id}}/">{{post.caption}}</a></p>
         </div>
         <div>
-          <button><a href='/comment/{{post.id}}/add'> Comment Here </a></button>
+          <button><a href='/community/comment/{{post.id}}/add/'> Comment Here </a></button>
 
           <a href="/uploads-like/{{post.id}}/"><button>❤{{post.likes.count}}</button></a>
 
         </div>
 
-        {% for comment in post.comments.all %}
+        {% for comment in post.community_comments.all %}
         <div>
           {%if request.user.id == post.author.id%}
           <a href="/comment/{{comment.id}}/remove/"><button class="delete">X</button></a>
@@ -69,9 +69,9 @@
           <p>{{comment.body}}
             {{comment.sender}} {{comment.time}}</p>
         </div>
+          {% endfor %}
+        </div>
         {% endfor %}
-        {% endfor %}
-      </div>
       {%endif%}
 </body>
 

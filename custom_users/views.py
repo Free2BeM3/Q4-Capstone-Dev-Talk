@@ -85,7 +85,7 @@ def profile_view(request, user_id: int):
 
 
 class CreateProfileView(LoginRequiredMixin, View):
-
+    
     def get(self, request, user_id):
         obj = Uzer.objects.get(id=user_id)
         data = {

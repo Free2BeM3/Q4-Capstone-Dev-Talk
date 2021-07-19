@@ -2,10 +2,11 @@ from django.dispatch.dispatcher import receiver
 from django.shortcuts import render, redirect, HttpResponseRedirect, reverse
 from community.models import CommunityImage, CommunityComment
 from community.forms import CIForm, RespondForm
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from notifs.models import Notifs
 
-
+@login_required
 def FeedView(request):
     cposts = CommunityImage.objects.all()
 
@@ -16,7 +17,7 @@ def DetailPostView(request, pk):
     post = CommunityImage.objects.get(id=pk)
     return render(request, 'community_detail.html', {'post': post})
 
-
+@login_required
 def AddCPostView(request):
     if request.method == 'POST':
 
@@ -32,7 +33,7 @@ def AddCPostView(request):
     form = CIForm()
     return render(request, 'form.html', {'form': form})
 
-
+@login_required
 def AddCComment(request, pk):
     target_post = CommunityImage.objects.get(pk=pk)
     if request .method == 'POST':
@@ -49,20 +50,20 @@ def AddCComment(request, pk):
         message = "Just commented on your Post."
         if commenter != owner:
             notify = Notifs.objects.create(
-                reciever=owner, sender=commenter, comment=posts, message=message)
+                reciever=owner, sender=commenter, message=message)
         return HttpResponseRedirect(reverse('homepage'))
 
     form = RespondForm()
     return render(request, 'form.html', {'form': form})
 
-
+@login_required
 def delete_ccomment(request, pk):
     comment = CommunityComment.objects.get(pk=pk)
     if request.user.id == comment.sender.id:
         comment.delete()
         return redirect('homepage')
 
-
+@login_required
 def cpost_likes(request, pk):
     post = CommunityImage.objects.get(pk=pk)
     owner = post.author
