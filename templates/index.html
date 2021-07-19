@@ -63,6 +63,8 @@
         <div class="Comment__Container">
           {% for comment in post.comments.all %}
           <div class="comments">
+            <link rel="stylesheet"href="{% static 'style.css'%}">
+
             <div class="comment__deets">
             <div id="comment__user">
                 <h4>Posted by: <img src="/media/images/{{comment.sender.avatar}}/" style="width: 25px; border-radius: 50%;"> {{comment.sender}} on {{comment.time}}</h4>

@@ -1,5 +1,5 @@
 body {
-    background-color: rgb(32, 32, 32);
+    background-color: gray;
 }
 /* Header  */
 .container {
@@ -7,6 +7,7 @@ body {
     height: 100vh;
     display: flex;
     flex-direction: column;
+   
     /* background-image: url(http://www.bradysammons.com/codepen/darkui/noise.png); */
     
 }
@@ -107,7 +108,7 @@ button {
 
 .card {
     width: 300px;
-    border: 3px solid aqua;
+    border: 3px solid lightblue;
     border-radius: 30px;
     margin-left: 15px;
     margin-top: 10px;
