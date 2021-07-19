@@ -1,7 +1,7 @@
 body {
 	height: 100vh;
-	background-image: url(http://www.bradysammons.com/codepen/darkui/noise.png);
-	
+	/* background-image: url(http://www.bradysammons.com/codepen/darkui/noise.png); */
+	background-color:gray;
 }
 
 
@@ -57,21 +57,27 @@ button {
     border-right: 1px solid black;
     display: flex;
     justify-content: center;
+    /* background-image: linear-gradient(to right, #87cefa, #f3faff);  */
     
 }
 
 .Feed {
-    border-left: 1px solid rgb(21, 128, 179);
-	border-right: 1px solid rgb(21, 128, 179);
-    width: 100%;
+    /* border-left: 3px solid rgb(21, 128, 179);
+	border-right: 3px solid rgb(21, 128, 179); */
     height: 100vh;
-    
+    color: #f3faff; 
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+	width: 100%;
+    background-image: grey;
 	
 	overflow-y: scroll;
+
+    /* background-image: url(http://www.bradysammons.com/codepen/darkui/noise.png);  */
 }
+
+
 
 .Feed::-webkit-scrollbar {
 	display: none;
@@ -79,12 +85,14 @@ button {
 
 .Comment__Container::-webkit-scrollbar {
 	display: none;
+
+	
 }
 .Post {
 	margin: auto;
 	margin-top: 20px;
-    border: 1px solid rgb(5, 132, 191);
-	border-radius: 30px;
+    border: 3px solid lightblue;
+    border-radius: 30px;
     width: 35%;
 	text-align: center;
 	display: flex;
@@ -92,6 +100,7 @@ button {
 	justify-content: center;
 	justify-content: space-evenly;
 	align-items: center;
+	
 }
 
 .Post_Caption {
@@ -101,6 +110,7 @@ button {
 
 .Post__Actions {
 	width: 100%;
+ 
 	display: flex;
 	flex-direction: row;
 	align-items: center;
@@ -131,17 +141,20 @@ a {
 .Comment__Container {
 	width: 98%;
 	height: 200px;
-	border: 1px solid rgba(36, 35, 35, 0.515);
+	border: 2px solid rgba(36, 35, 35, 0.515); 
+    
+
 	border-radius: 30px;
 	overflow-y: scroll;
 	margin-bottom: 5px;
+	
 }
 
 .comments {
 	margin: auto;
 	margin-top: 10px;
 	width: 95%;
-	border: 1px solid rgb(9, 131, 172);
+	
 	border-radius: 5px;
 }
 
@@ -150,6 +163,7 @@ a {
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
+	
 
 }
 

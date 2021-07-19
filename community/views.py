@@ -76,4 +76,4 @@ def cpost_likes(request, pk):
             message = "Just liked your post."
             notify = Notifs.objects.create(
                 reciever=owner, sender=user, message=message)
-    return HttpResponseRedirect(reverse('homepage'))
+    return HttpResponseRedirect(reverse('community_feed'))

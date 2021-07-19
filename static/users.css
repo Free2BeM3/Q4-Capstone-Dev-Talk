@@ -1,6 +1,7 @@
 body {
     height: 100vh;
-    background-color: rgb(32, 32, 32);
+    /* background-color: rgb(32, 32, 32); */
+    background-color:gray;
 }
 
 
@@ -10,7 +11,9 @@ body {
     height: 100%;
     display: flex;
     flex-direction: column;
-    background-image: url(http://www.bradysammons.com/codepen/darkui/noise.png);
+    /* background-image: url(http://www.bradysammons.com/codepen/darkui/noise.png);  */
+    background-image: grey;
+
 }
 
 .Header {
@@ -79,6 +82,7 @@ button {
 
 .Header__Center > a {
     text-decoration: none;
+
 }
 
 /* User Cards */
@@ -96,7 +100,7 @@ button {
     margin: 15px;
     width: 300px;
     height: 300px;
-    border: 2px solid white;
+    border: 2px solid lightblue;
     display: flex;
     flex-direction: column;
     justify-content: center;
