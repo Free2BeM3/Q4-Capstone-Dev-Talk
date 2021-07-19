@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,7 +44,6 @@
     <div class="Feed">
       {% for post in posts %}
       <div class='Post'>
-
         <div class="Post__Header">
           <p>posted by <a href="/profile/{{post.author.id}}/">@{{post.author}}</a> on {{post.created_at}}</p>
           <img src="/media/{{post.image}}/" alt='post-img'  />
@@ -53,8 +53,10 @@
         </div>
         <div class="Post__Actions">
           <button><a href='/comment/{{post.id}}/add'> Comment Here </a></button>
+          <link rel="stylesheet"href="{% static 'style.css'%}">
 
           <a href="/uploads-like/{{post.id}}/"><button>❤{%if post.likes.count > 0%}{{post.likes.count}}{%endif%}</button></a>
+          <link rel="stylesheet"href="{% static 'style.css'%}">
 
         </div>
         {%if post.comments.count > 0%}
