@@ -2,10 +2,11 @@ from django.dispatch.dispatcher import receiver
 from django.shortcuts import render, redirect, HttpResponseRedirect, reverse
 from uploads.models import Image, Comment
 from uploads.forms import ImageForm, AddCommentForm
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from notifs.models import Notifs
 
-
+@login_required
 def AddPostView(request):
     if request.method == 'POST':
 
@@ -21,7 +22,7 @@ def AddPostView(request):
     form = ImageForm()
     return render(request, 'form.html', {'form': form})
 
-
+@login_required
 def AddComment(request, pk):
     target_post = Image.objects.get(pk=pk)
     if request .method == 'POST':
@@ -44,14 +45,14 @@ def AddComment(request, pk):
     form = AddCommentForm()
     return render(request, 'form.html', {'form': form})
 
-
+@login_required
 def delete_comment(request, pk):
     comment = Comment.objects.get(pk=pk)
     if request.user.id == comment.sender.id:
         comment.delete()
         return redirect('homepage')
 
-
+@login_required
 def post_likes(request, pk):
     post = Image.objects.get(pk=pk)
     owner = post.author

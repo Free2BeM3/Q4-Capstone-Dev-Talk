@@ -16,7 +16,7 @@ body {
 .Header {
     width: 100%;
     height: 10%;
-    background-color: rgb(6, 138, 214);
+    background-image: linear-gradient(to right, #87cefa, #f3faff) !important;
     border-bottom: 1px solid rgb(57, 60, 61);
     border-bottom-left-radius: 14px;
     border-bottom-right-radius: 14px;
@@ -63,7 +63,11 @@ button {
     color: aqua;
     background-image: url(http://www.bradysammons.com/codepen/darkui/noise.png);
     align-items: center;
+    font-size: large;
+    font-weight: bold;
 }
+
+
 
 .profile__button {
     width: 12%;
