@@ -48,9 +48,8 @@ def AddComment(request, pk):
 @login_required
 def delete_comment(request, pk):
     comment = Comment.objects.get(pk=pk)
-    if request.user.id == comment.sender.id:
-        comment.delete()
-        return redirect('homepage')
+    comment.delete()
+    return redirect('homepage')
 
 @login_required
 def post_likes(request, pk):

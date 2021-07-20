@@ -59,9 +59,8 @@ def AddCComment(request, pk):
 @login_required
 def delete_ccomment(request, pk):
     comment = CommunityComment.objects.get(pk=pk)
-    if request.user.id == comment.sender.id:
-        comment.delete()
-        return redirect('community_feed')
+    comment.delete()
+    return redirect('community_feed')
 
 @login_required
 def cpost_likes(request, pk):
