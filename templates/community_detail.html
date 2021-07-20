@@ -21,15 +21,18 @@
 
     <div class="Header__Center">
       <!-- Nav Links -->
+      <a href="/">
+        <button><strong>Home</strong></button>
+      </a>
 
       <a href="/profile/{{request.user.id}}/">
-        <button><strong>{{request.user.username}}</strong></stron></button>
+        <button><img src="/media/images/{{request.user.avatar}}/" style="width: 30px; border-radius: 50%;"><strong>{{request.user.username}}</strong></stron></button>
       </a>
-      <a href="/community/uploads/"><button><strong>+Add</strong></button></a>
-      <button><a href="/notification/"><strong>Notifications:{{notifs}} </strong></a></button>
+      <a href="/community/uploads/"><button><strong>Ask</strong></button></a>
+      
 
       <a href="/users/">
-        <button><strong>People</strong></button>
+        <button><strong>Search Users</strong></button>
       </a>
 
       <a href="/community/">
@@ -62,7 +65,7 @@
           <a href="/community/uploads-like/{{post.id}}/"><button>❤{{post.likes.count}}</button></a>
 
         </div>
-        {% for comment in post.comments.all %}
+        {% for comment in post.community_comments.all %}
         <div>
           {%if request.user.id == post.author.id%}
           <a href="/community/comment/{{comment.id}}/remove/"><button class="delete">X</button></a>
