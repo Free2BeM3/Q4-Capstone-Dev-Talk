@@ -25,3 +25,17 @@ They can also ask for help in the Community tab.
 users have the ability to like and comment on all posts
 also a user who is the author of a post can delete all comments on their posts
 and comment authors can delete their own comments.
+
+
+# Tech stack
+Django
+Sqlite
+HTML
+CSS
+
+# Links
+
+Project Pitch - https://docs.google.com/document/d/1pkWWo7e6ycXklo2EcFTktJuztLZ1CSqiVa4TzuLLPTc/edit#
+
+Trello Board - https://trello.com/b/bMcHfV23/devtalk
+
